@@ -72,7 +72,6 @@ function App() {
       <Header
         onCreate={handleCreate}
         onSearch={setQuery}
-        colorPalette={{ primary: '#3F51B5', accent: '#E91E63', secondary: '#FFC107' }}
       />
       <div className="layout">
         <aside className="sidebar">
@@ -89,7 +88,6 @@ function App() {
               note={selectedNote}
               onChange={(partial) => handleUpdate(selectedNote.id, partial)}
               onDelete={() => handleDelete(selectedNote.id)}
-              colorPalette={{ primary: '#3F51B5', accent: '#E91E63', secondary: '#FFC107' }}
             />
           ) : (
             <EmptyState onCreate={handleCreate} />

@@ -3,10 +3,10 @@ import { formatFullDate } from '../lib/time';
 
 /**
  * NoteEditor provides inputs to edit a note's title and content.
- * @param {{note: {id:string,title:string,content:string,createdAt:number,updatedAt:number}, onChange: (partial: object)=>void, onDelete: ()=>void, colorPalette: {primary:string, accent:string, secondary:string}}} props
+ * @param {{note: {id:string,title:string,content:string,createdAt:number,updatedAt:number}, onChange: (partial: object)=>void, onDelete: ()=>void}} props
  */
  // PUBLIC_INTERFACE
-export default function NoteEditor({ note, onChange, onDelete, colorPalette }) {
+export default function NoteEditor({ note, onChange, onDelete }) {
   const [title, setTitle] = useState(note.title || '');
   const [content, setContent] = useState(note.content || '');
 
@@ -27,7 +27,7 @@ export default function NoteEditor({ note, onChange, onDelete, colorPalette }) {
   }, [title, content]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <section className="editor-card" style={{ '--primary': colorPalette.primary, '--accent': colorPalette.accent, '--secondary': colorPalette.secondary }}>
+    <section className="editor-card">
       <input
         className="editor-title"
         placeholder="Title"

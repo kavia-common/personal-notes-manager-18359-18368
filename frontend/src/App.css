@@ -1,17 +1,28 @@
 :root {
-  --primary: #3F51B5;
-  --accent: #E91E63;
-  --secondary: #FFC107;
+  /* Monochrome palette */
+  --mono-0: #ffffff;
+  --mono-50: #f8f8f8;
+  --mono-100: #f2f2f2;
+  --mono-200: #e6e6e6;
+  --mono-300: #d4d4d4;
+  --mono-400: #a3a3a3;
+  --mono-500: #737373;
+  --mono-600: #525252;
+  --mono-700: #404040;
+  --mono-800: #262626;
+  --mono-900: #171717;
+  --focus: rgba(0,0,0,0.14);
 
-  --bg: #ffffff;
-  --bg-elev: #f7f8fb;
-  --text: #1f2937;
-  --text-muted: #6b7280;
-  --border: #e5e7eb;
+  /* Theme tokens */
+  --bg: var(--mono-0);
+  --bg-elev: var(--mono-50);
+  --text: var(--mono-900);
+  --text-muted: var(--mono-500);
+  --border: var(--mono-200);
 
   --radius: 12px;
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
-  --shadow-md: 0 6px 20px rgba(63, 81, 181, 0.15);
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md: 0 8px 28px rgba(0,0,0,0.12);
 }
 
 * { box-sizing: border-box; }
@@ -34,7 +45,7 @@ body, html, #root {
   top: 0;
   z-index: 10;
   backdrop-filter: saturate(180%) blur(8px);
-  background: linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.75) 100%);
+  background: linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.86) 100%);
   border-bottom: 1px solid var(--border);
 }
 
@@ -53,14 +64,14 @@ body, html, #root {
   gap: 10px;
   font-weight: 800;
   letter-spacing: 0.3px;
-  color: var(--primary);
+  color: var(--text);
 }
 
 .brand-mark {
   width: 28px;
   height: 28px;
   border-radius: 8px;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
+  background: linear-gradient(135deg, var(--mono-900), var(--mono-600));
   box-shadow: var(--shadow-sm);
 }
 
@@ -73,22 +84,27 @@ body, html, #root {
 
 .btn {
   appearance: none;
-  border: 1px solid var(--primary);
-  background: var(--primary);
-  color: white;
+  border: 1px solid var(--mono-800);
+  background: var(--mono-900);
+  color: #fff;
   padding: 10px 14px;
   border-radius: 10px;
   font-weight: 600;
   cursor: pointer;
   box-shadow: var(--shadow-sm);
-  transition: transform 0.08s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+  transition: transform 0.08s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
-.btn:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+.btn:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); background: var(--mono-800); }
 .btn:active { transform: translateY(0); }
 
 .btn.secondary {
   background: transparent;
-  color: var(--primary);
+  color: var(--text);
+  border-color: var(--border);
+}
+.btn.secondary:hover {
+  background: var(--mono-100);
+  border-color: var(--mono-300);
 }
 
 .search {
@@ -103,13 +119,14 @@ body, html, #root {
   border: 1px solid var(--border);
   border-radius: 10px;
   background: #fff;
+  color: var(--text);
   outline: none;
   transition: border-color .2s ease, box-shadow .2s ease;
 }
 
 .search input:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 4px rgba(63,81,181,0.12);
+  border-color: var(--mono-700);
+  box-shadow: 0 0 0 4px var(--focus);
 }
 
 .search .icon {
@@ -157,16 +174,18 @@ body, html, #root {
   border-radius: var(--radius);
   padding: 12px;
   cursor: pointer;
-  transition: box-shadow .2s ease, border-color .2s ease, transform .05s ease;
+  transition: box-shadow .2s ease, border-color .2s ease, transform .05s ease, background .2s ease;
 }
 .note-item:hover {
-  border-color: var(--primary);
+  border-color: var(--mono-700);
   box-shadow: var(--shadow-sm);
+  background: var(--mono-0);
 }
 .note-item.active {
-  border-color: var(--primary);
+  border-color: var(--mono-800);
   box-shadow: var(--shadow-md);
   transform: translateY(-1px);
+  background: var(--mono-0);
 }
 
 .note-item-title {
@@ -194,7 +213,7 @@ body, html, #root {
   padding: 6px;
   cursor: pointer;
 }
-.icon-btn:hover { background: var(--bg-elev); color: var(--accent); }
+.icon-btn:hover { background: var(--bg-elev); color: var(--mono-900); }
 
 /* Editor */
 .editor-card {
@@ -216,10 +235,12 @@ body, html, #root {
   font-size: 18px;
   font-weight: 700;
   outline: none;
+  color: var(--text);
+  background: var(--mono-0);
 }
 .editor-title:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 4px rgba(63,81,181,0.12);
+  border-color: var(--mono-700);
+  box-shadow: 0 0 0 4px var(--focus);
 }
 
 .editor-textarea {
@@ -231,10 +252,12 @@ body, html, #root {
   resize: vertical;
   outline: none;
   line-height: 1.6;
+  color: var(--text);
+  background: var(--mono-0);
 }
 .editor-textarea:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 4px rgba(63,81,181,0.12);
+  border-color: var(--mono-700);
+  box-shadow: 0 0 0 4px var(--focus);
 }
 
 .editor-footer {

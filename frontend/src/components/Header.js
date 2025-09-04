@@ -2,12 +2,12 @@ import React from 'react';
 
 /**
  * Header renders the top navigation bar with brand, search, and "New Note" button.
- * @param {{onCreate: () => void, onSearch: (q:string)=>void, colorPalette: {primary:string, accent:string, secondary:string}}} props
+ * @param {{onCreate: () => void, onSearch: (q:string)=>void}} props
  */
  // PUBLIC_INTERFACE
-export default function Header({ onCreate, onSearch, colorPalette }) {
+export default function Header({ onCreate, onSearch }) {
   return (
-    <header className="header" style={{ '--primary': colorPalette.primary, '--accent': colorPalette.accent, '--secondary': colorPalette.secondary }}>
+    <header className="header">
       <div className="header-inner">
         <div className="brand" aria-label="Personal Notes">
           <div className="brand-mark" />
